@@ -1,0 +1,32 @@
+
+<div class="container table-responsive py-5">
+  <%= image_tag 'ig-logo-w.svg' , class:"logo"%>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col" class="btlr">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Type</th>
+        <th scope="col">Link</th>
+        <th scope="col" class="btrr">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @intelligems.each do |intelligem| %>
+        <tr>
+          <th><%= intelligem.id %></th>
+          <td><%= intelligem.name  %></td>
+          <td><%= intelligem.link_type %></td>
+          <td><%= intelligem.link.include?("lazada") ? 'Lazada' : 'Others' %></td>
+          <td>
+            <%= link_to 'Edit', edit_intelligem_path(intelligem), class:'edit' %>
+            <%= link_to 'Show', intelligem, class:'show', target:"_blank"%>
+          </td>
+        </tr>
+    </tbody>
+  <% end %>
+  </table>
+</div>
+
+<br>
+

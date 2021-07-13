@@ -1,0 +1,21 @@
+
+<p>
+  <strong>Name:</strong>
+  <%= @intelligem.name %>
+</p>
+
+<p>
+  <strong>Link type:</strong>
+  <%= @intelligem.link_type %>
+</p>
+
+<script>
+  function redirect() {
+    setTimeout(window.location.href = '<%= @intelligem.link%>', 5000)
+  }
+  redirect()
+</script>
+
+
+<%= link_to 'Edit', edit_intelligem_path(@intelligem) %> |
+<%= link_to 'Back', intelligems_path %>

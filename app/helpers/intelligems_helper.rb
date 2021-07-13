@@ -1,0 +1,2 @@
+module IntelligemsHelper
+end

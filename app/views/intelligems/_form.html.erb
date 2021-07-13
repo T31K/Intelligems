@@ -1,0 +1,62 @@
+<%= form_with(model: intelligem) do |form| %>
+  <% if intelligem.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(intelligem.errors.count, "error") %> prohibited this intelligem from being saved:</h2>
+      <ul>
+        <% intelligem.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <span class="anchor" id="formPayment"></span>
+        <!-- form card cc payment -->
+        <div class="card card-outline-secondary">
+          <div class="card-body p-5">
+            <h3 class="text-center">Editing # <%= intelligem.id %></h3>
+
+            <form autocomplete="off" class="form" role="form">
+
+              <div class="form-group">
+                <label for="cc_name">Name</label>
+                <%= form.text_field :name, class:"form-control", id:"cc_name"%>
+                <br>
+                <label for="cc_name">Link Type</label>
+                <%= form.select :link_type, [["Social (Default)", "social"], ["Product", "product"], ["Promo", "promo"]], {}, {class: "form-control"} %>
+                <br>
+                <label for="cc_name">Link</label>
+                <%= form.text_field :link, class:"form-control", id:"cc_name"%>
+                <br>
+              </div>
+
+              <div class="form-group row">
+                <div class="col-md-6">
+                  <button class="btn btn-default btn-lg btn-block" type="reset">Cancel</button>
+                </div>
+                <div class="col-md-6">
+                  <button class="btn btn-success btn-lg btn-block" type="submit">Submit</button>
+                </div>
+              </div>
+
+              <div class="controls">
+                <%= link_to 'Test', @intelligem, class:'text-center'%>
+              </div>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+<% end %>
+
+
+<style>
+  body {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+</style>
