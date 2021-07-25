@@ -4,7 +4,7 @@ class IntelligemsController < ApplicationController
 
   # GET /intelligems or /intelligems.json
   def index
-    @intelligems = Intelligem.all
+    @intelligems = Intelligem.all.order(:id)
   end
 
   # GET /intelligems/1 or /intelligems/1.json
