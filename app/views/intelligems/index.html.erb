@@ -1,6 +1,7 @@
 
 <div class="container table-responsive py-5">
   <%= image_tag 'ig-logo-w.svg' , class:"logo"%>
+
   <table class="table">
     <thead class="thead-dark">
       <tr>
@@ -8,23 +9,40 @@
         <th scope="col">Name</th>
         <th scope="col">Type</th>
         <th scope="col">Link</th>
-        <th scope="col" class="btrr">Actions</th>
+        <th scope="col" class="btrr text-center">Actions</th>
       </tr>
     </thead>
     <tbody>
       <% @intelligems.each do |intelligem| %>
         <tr>
           <th><%= intelligem.id %></th>
-          <td><%= intelligem.name  %></td>
-          <td><%= intelligem.link_type %></td>
-          <td><%= intelligem.link.include?("lazada") ? 'Lazada' : 'Others' %></td>
-          <td>
-            <%= link_to 'Edit', edit_intelligem_path(intelligem), class:'edit' %>
-            <%= link_to 'Show', intelligem, class:'show', target:"_blank"%>
+          <td><%= intelligem.name.capitalize  %></td>
+          <td><%= intelligem.link_type.capitalize %></td>
+            <% if intelligem.link_type === 'product' %>
+              <td> <%= intelligem.link.include?('lazada') ? 'Lazada' : 'Others' %> </td>
+            <% elsif intelligem.link_type === 'promo' %>
+              <td></td>
+            <% else%>
+              <td></td>
+            <% end %>
+          <td class="text-center">
+            <%= link_to '', edit_intelligem_path(intelligem), class:"fas fa-pen-square show" %>
+            <%= link_to '', intelligem, class:"fas fa-eye show", target:"_blank" %>
+
           </td>
         </tr>
     </tbody>
+
   <% end %>
+     <thead class="thead-dark">
+      <tr>
+        <th scope="col" class="bblr">  </th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+        <th scope="col" class="bbrr">  </th>
+      </tr>
+    </thead>
   </table>
 </div>
 

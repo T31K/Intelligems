@@ -1,5 +1,6 @@
 class IntelligemsController < ApplicationController
   before_action :set_intelligem, only: %i[ show edit update destroy ]
+  skip_before_action :verify_authenticity_token
 
   # GET /intelligems or /intelligems.json
   def index
@@ -39,7 +40,6 @@ class IntelligemsController < ApplicationController
     respond_to do |format|
       if @intelligem.update(intelligem_params)
         format.html { redirect_to action: "index" }
-        format.json { render :show, status: :ok, location: @intelligem }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @intelligem.errors, status: :unprocessable_entity }

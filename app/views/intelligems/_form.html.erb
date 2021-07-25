@@ -1,10 +1,9 @@
 <%= form_with(model: intelligem) do |form| %>
   <% if intelligem.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(intelligem.errors.count, "error") %> prohibited this intelligem from being saved:</h2>
       <ul>
         <% intelligem.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+          <h4 class='text-center text-white'><%= error.full_message %><h4>
         <% end %>
       </ul>
     </div>
@@ -25,24 +24,25 @@
                 <%= form.text_field :name, class:"form-control", id:"cc_name"%>
                 <br>
                 <label for="cc_name">Link Type</label>
-                <%= form.select :link_type, [["Social (Default)", "social"], ["Product", "product"], ["Promo", "promo"]], {}, {class: "form-control"} %>
+                <%= form.select :link_type, [["Social (Default)", "social"], ["Product", "product"], ["Promo", "promo"]], {}, {class: "form-control link_type"}%>
                 <br>
-                <label for="cc_name">Link</label>
-                <%= form.text_field :link, class:"form-control", id:"cc_name"%>
+                <label for="cc_name"> Link </label>
+                <%= form.text_field :link, class:"form-control link_input", id:"cc_name" %>
                 <br>
               </div>
 
               <div class="form-group row">
                 <div class="col-md-6">
-                  <button class="btn btn-default btn-lg btn-block" type="reset">Cancel</button>
+                  <%= button_to "Back", root_path , class:'btn btn-default btn-lg btn-block back'%>
                 </div>
                 <div class="col-md-6">
-                  <button class="btn btn-success btn-lg btn-block" type="submit">Submit</button>
+                  <button class="btn btn-success btn-lg btn-block update" type="submit">Update</button>
                 </div>
               </div>
 
-              <div class="controls">
-                <%= link_to 'Test', @intelligem, class:'text-center'%>
+              <div class="controls mt-4">
+                <br>
+                <h4 class='test'>Test <%= link_to ' ', @intelligem, class:'fas fa-eye text-center show', target:"_blank"%> </h4>
               </div>
             </form>
           </div>
@@ -59,4 +59,36 @@
     padding-left: 10%;
     padding-right: 10%;
   }
+
+  .btn-block {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+  }
+
+
 </style>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+  <script>
+  var link = ""
+  $(document).ready(function() {
+    let input = $('.link_type').val()
+    if (input === 'social' || input === 'promo') {
+      $('.link_input').prop('disabled', true)
+      $('.link_input').val('')
+
+    } else {
+      $('.link_input').prop('disabled', false)
+
+    }
+  })
+    $('.link_type').on('change', function() {
+      if (this.value === 'social' || this.value === 'promo') {
+        $('.link_input').val('')
+        $('.link_input').prop('disabled', true)
+      } else {
+        $('.link_input').val('')
+        $('.link_input').prop('disabled', false)
+      }
+    })
+
+  </script>

@@ -15,13 +15,35 @@ body {
   margin-bottom: 20px;
 }
 
+.center-all {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .btrr {
   border-top-right-radius: 20px;
-
 }
 
 .btlr {
   border-top-left-radius: 20px;
+}
+
+.bblr {
+  border-bottom-left-radius: 20px;
+}
+
+.bbrr {
+  border-bottom-right-radius: 20px;
+}
+
+a{
+  color: grey;
+
+  &:hover {
+    text-decoration: none;
+    color: #222;
+  }
 }
 
 .table .thead-dark th {
@@ -41,6 +63,7 @@ body {
 
 .show {
   margin-left: 7px;
+  color: #222;
 }
 
 .controls {
@@ -53,3 +76,60 @@ body {
     margin-right: 5px;
   }
 }
+
+.update {
+  background: #43b076;
+  border: none !important;
+}
+
+.back {
+  border: none !important;
+  background: #e9457c;
+  color: white;
+}
+
+
+
+.test {
+  padding: 10px;
+  border-radius: 5px;
+  background: #3392cd;
+  color: white;
+
+  a {
+    color: white;
+  }
+}
+
+
+//////
+.profile-name {
+  text-align: center;
+  padding: 30px;
+}
+
+.links {
+  text-align: center;
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid white;
+  border-width: 2px;
+  width: 290px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 40px;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  transition: color 1s;
+}
+
+a:hover {
+  color: #000;
+  background: #fff;
+}
+
